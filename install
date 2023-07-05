@@ -1,0 +1,26 @@
+#!/bin/bash
+
+create-container()
+{
+    mkdir ~/.container/
+}
+install()
+{
+    echo "Python is $(which python3) at version $(python3 --version)"
+    echo "Copying qube to /bin/..."
+    sudo cp qube.py /bin/qube
+    sudo cp qube.py /sbin/qube
+    sudo chmod +x /bin/qube
+    echo "Copying container template..."
+    sudo cp -r qube-container-template /opt/qube-container-template/
+    echo "Done"
+}
+
+if [ $1 == "install" ]
+then
+    install
+fi
+if [ $1 == "create-container" ]
+then
+    create-container
+fi
